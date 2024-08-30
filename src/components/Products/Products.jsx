@@ -1,15 +1,17 @@
 import axios from 'axios'
 import React, { useEffect, useState} from 'react'
 
-function Products() {
+function Products({isSelected}) {
+    console.log(isSelected)
+    const url= isSelected?`https://fakestoreapi.com/products/category/${isSelected}` : 'https://fakestoreapi.com/products'
     const [data,setData] = useState()
     useEffect(()=>{
-        axios.get('https://fakestoreapi.com/products')
+        axios.get(url)
         .then((res)=>{
             console.log(res.data)
             setData(res.data)
         })
-    },[])
+    },[isSelected])
   return (
     <div className='mt-10'>
         <h1 className=' m-10 text-2xl font-bold'>Products</h1>

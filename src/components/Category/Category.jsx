@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-function Category() {
+function Category({onClick}) {
     const [data,setData] = useState();
     
     useEffect(()=>{
@@ -12,13 +12,14 @@ function Category() {
         })
     },[])
 
+
     return (
     <>
         {data &&
         <div className='flex justify-evenly mt-5'>
         {data.map((entry,index)=>{
             return(
-                <button className='bg-[#F3F9FB]  rounded-xl p-1 hover:text-[#008ECC] capitalize' key={index}>{entry}</button>
+                <button onClick={()=>onClick(entry)} className='bg-[#F3F9FB] rounded-xl p-1 hover:text-[#008ECC] capitalize' key={index}>{entry}</button>
             )
         })}
         </div>
