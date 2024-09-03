@@ -3,13 +3,16 @@ import cartIcon from "/HeaderImages/DropDown.png";
 import SearchIcon from "/HeaderImages/Search.png";
 import userIcon from "/HeaderImages/user.png";
 import addCart from "/HeaderImages/Stroke-5.png";
+import { useNavigate } from "react-router-dom";
+
 
 const Header = () => {
+  const navigate = useNavigate()
   return (
     <div className="pt-5 flex items-center justify-around">
       <div className="flex">
         <img src={cartIcon} alt="" className="w-[48px] h-[48px]" />
-        <span className="w-[138px] h-[28px] py-3 font-bold text-2xl text-[#008ECC] pl-3">E-BUY</span>
+        <span className="w-[138px] h-[28px] py-3 font-bold text-2xl text-[#008ECC] pl-3 cursor-pointer" onClick={()=>navigate("/",)}>E-BUY</span>
       </div>
       <div className="relative flex items-center">
         <img
