@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import Layout from './pages/Layout'
 import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 
 
 function App() {
@@ -15,6 +16,7 @@ return(
       <Route path='/' element= {<HomePage />}></Route>
       <Route path=':id' element={<ProductPage />}></Route>  
       <Route path='/login' element={<LoginPage />}></Route>
+      <Route path='/register' element={<RegisterPage />}></Route>
       </Route>
     </Routes>
     </BrowserRouter>

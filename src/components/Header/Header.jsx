@@ -28,10 +28,10 @@ const Header = () => {
       </div>
       <div className="relative flex items-center justify-between px-2 ">
         <img src={userIcon} alt="" className=" h-6 w-6 " />
-        <span className="mx-2 ">Log In</span>
+        <span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
 
-        <img src={addCart} className="mx-1 h-4 w-5" />
-        <span>Cart</span>
+        <img src={addCart} className="mx-1 h-4 w-5 " />
+        <span className="cursor-pointer">Cart</span>
       </div>
     </div>
   );
