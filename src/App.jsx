@@ -15,9 +15,10 @@ return(
       <Route element={<Layout />}>
       <Route path='/' element= {<HomePage />}></Route>
       <Route path=':id' element={<ProductPage />}></Route>  
+      
+      </Route>
       <Route path='/login' element={<LoginPage />}></Route>
       <Route path='/register' element={<RegisterPage />}></Route>
-      </Route>
     </Routes>
     </BrowserRouter>
   </div>
