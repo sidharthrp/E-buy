@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 // import Login from '../components/LoginInput/Login'
 import { createUserWithEmailAndPassword} from "firebase/auth";
 import { auth } from '../components/Firebase/firebase';
+import google from '/SignIn/google.png'
 
 function RegisterPage() {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -28,23 +29,30 @@ function RegisterPage() {
     console.log(registerEmail)
   return (
     <div>
-      <div className='flex flex-col items-center justify-center mt-20 bg-blue-200 mx-[500px]'>
-      <h1 className='py-10 text-4xl font-bold text-[#008ECC] uppercase '>Register</h1>
+      <div className='flex flex-col items-center justify-center mt-20'>
+      <h1 className='py-10 text-4xl'>Get Started Now</h1>
     
     <form onSubmit={register}> 
-    <div>
-      
-    <div className='flex py-10 ' >
-        <p className='m-2 text-[#008ECC] font-bold text-xl'>Email</p>
-        <input type='email'className='border-2 ' onChange={handleEmail}></input>
-        </div>
-      <div className='flex'>
-        <p className='m-2 text-[#008ECC] font-bold text-xl'>Password</p>
-        <input type='password' className='border-2'onChange={handlePassword}></input>
+      <div className='py-10 w-[404px] ' >
+        <p className='mt-2 text-[16px]'>Email Address</p>
+        <input type='email'className='border-2  w-full h-[32px] rounded-lg' onChange={handleEmail}></input>
       </div>
-    </div>
-      <div className='flex py-10 px-2 mt-3 mb-5'>
-        <button type='submit' className=' bg-orange-500 text-white  border-4 px-5 py-3 mx-2 uppercase'>Register</button>
+      <div className=''>
+        <p className='mt-2  text-[16px]'>Password</p>
+        <input type='password' className='border-2 w-full h-[32px] rounded-lg'onChange={handlePassword}></input>
+      </div>
+      <div className=' pt-10 mt-3 mb-10'>
+        <button type='submit' className=' bg-[#3A5B22] text-white rounded-lg h-[32px] uppercase w-full'>Register</button>
+      </div>
+      <p className=' text-center'>Or</p>
+      <div className='flex mt-4 gap-2'>
+        <div className='flex border-2 rounded-lg w-[202px]'>
+          <img src={google}></img>
+          <button className='text-[14px] px-3 text-center'>Sign in with Google</button>
+        </div>
+        <div>
+          <button className='text-[14px] px-2 py-1 text-center border-2 rounded-lg'>Have an Account? Sign In</button>
+        </div>
       </div>
     </form> 
     </div>
