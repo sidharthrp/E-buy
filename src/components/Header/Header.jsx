@@ -31,7 +31,7 @@ const Header = () => {
         <span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
 
         <img src={addCart} className="mx-1 h-4 w-5 " />
-        <span className="cursor-pointer">Cart</span>
+        <span className="cursor-pointer" onClick={()=>navigate('/cart')}>Cart</span>
       </div>
     </div>
   );
