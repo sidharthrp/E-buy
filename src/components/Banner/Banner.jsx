@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import {useNavigate} from 'react-router-dom'
 
 function Banner() {
     const [data, setData] = useState()
     const [index,setIndex] = useState(0)
+    const navigate = useNavigate()
     
     useEffect(()=>{
         
         axios.get(`https://fakestoreapi.com/products?limit=5`)
         .then((res)=>{
             console.log(res.data)
-            // let randomNo=Math.floor(Math.random()*res.data.length)
-            // console.log(randomNo)
             setData(res.data)
             console.log(data)
         })
@@ -54,21 +54,11 @@ function Banner() {
 
     return (
     <div>
-        {/* {data.map((entry,id)=>{
-            return (<>
-                <h1>{entry.category}</h1>
-                <img className=' w-[1200px] h-[316px] object-contain bg-gradient-to-r from-cyan-500 to-blue-500' src={entry.image}></img>
-                </>
-            )
-        })} */}
         {data?
         <div className=' mx-40 w-[full] h-[300px] flex items-center'>
-            {/* <h1>{data[index].category}</h1> */}
-            <div className=' relative md:w-[700px] lg:w-full h-[216px]'> 
-                {/* <h1>{data[index].category}</h1> */}
-                <img className='w-full h-[216px]  object-contain bg-gradient-to-r from-blue-400 from-5% via-white via-50% to-blue-400 to-100%' src={data[index].image}></img> 
+            <div className=' relative md:w-[700px] lg:w-full h-[216px]' > 
+                <img className='w-full h-[216px]  object-contain bg-gradient-to-r from-blue-400 from-5% via-white via-50% to-blue-400 to-100% hover:cursor-pointer' src={data[index].image} onClick={()=>navigate(`/${data[index].id}`)}></img> 
 
-                {/* <div className='flex justify-between items-center bg-gradient-to-r from-blue-500 via-white to-blue-500'> */}
                  <div className="absolute bottom-4 left-4 text-black uppercase text-xl font-bold">
                         {data[index].category}
                 </div>
