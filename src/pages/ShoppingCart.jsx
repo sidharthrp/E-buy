@@ -1,24 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import {db} from '../components/Firebase/firebase'
+import {getDocs, collection} from 'firebase/firestore'
 
 function ShoppingCart() {
-  const [items, setItems] = useState();
+  const [items, setItems] = useState([]);
   let totalPrice = 0
   let discount = 1
   let finalPrice = 0
   let delivery = 10
   useEffect(()=>{
-    axios.get(`https://fakestoreapi.com/products?limit=2`)
-    .then((res)=>{
-        setItems(res.data)
-    })
+    // axios.get(`https://fakestoreapi.com/products?limit=2`)
+    // .then((res)=>{
+    //     setItems(res.data)
+    // })
+    const fetchCartData = async() => {
+        try{
+        const cartCollection = collection(db,'Cart')
+        const querySnapshot = await getDocs(cartCollection)
+        const cartItems = querySnapshot.docs.map(doc=>{
+            const data = doc.data();
+            console.log(data)
+            return{
+            id:doc.pId,
+            title:data.title,
+            price:data.price,
+            image:data.imageUrl
+            }
+        })
+        console.log("Data Fetched")
+        setItems(cartItems)
+
+        }
+        catch(error){
+            console.error("Error fetching data")
+        }
+    }
+    fetchCartData();
   },[])  
   return (
     <div className='flex justify-around  mt-20'>
         <div className=''>
             <h1 className='font-bold text-xl'>Shopping Cart</h1>
             <p>You have items in your cart</p>
-            {items ? <div className='my-10'>
+            {items.length>0 ? <div className='my-10'>
                 {items.map((item,index)=>{
                     totalPrice+=parseInt(item.price)
                     {discount=Math.floor(totalPrice*.1)}

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { addToCart } from '../components/Cart/CartActions'
 
 function ProductPage() {
   const {id} = useParams()
@@ -13,6 +14,9 @@ function ProductPage() {
     }
     )
   },[])
+  function handleAddToCart(){
+    addToCart(productDtls)
+  }
   return (
     <div>
         {productDtls && 
@@ -20,7 +24,7 @@ function ProductPage() {
             <div className='p-16 border-2 m-8'>
                 <img src={productDtls.image} className=' h-96 w-72'></img>
                 <div className='mt-10 flex justify-between items-center'>
-                    <button className='bg-amber-500 text-white h-12 uppercase p-2 border-4'>Add to Cart</button>
+                    <button className='bg-amber-500 text-white h-12 uppercase p-2 border-4' onClick={handleAddToCart}>Add to Cart</button>
                     <button className='bg-green-500 text-white h-12 uppercase p-2 border-4'>Buy Now</button>
                 </div>
             </div>
