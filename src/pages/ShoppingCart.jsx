@@ -4,6 +4,7 @@ import {db} from '../components/Firebase/firebase'
 import {getDocs, collection} from 'firebase/firestore'
 import deleteIcon from '/Cart/delete.png'
 import { removeCartItem } from '../components/Cart/RemoveCart';
+import { getAuth } from 'firebase/auth';
 
 function ShoppingCart() {
     const [items, setItems] = useState([]);
@@ -13,8 +14,11 @@ function ShoppingCart() {
     let delivery = 10
     useEffect(()=>{
         const fetchCartData = async() => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if(user){
         try{
-            const cartCollection = collection(db,'Cart')
+            const cartCollection = collection(db,'Cart',user.uid,'CartItems')
             const querySnapshot = await getDocs(cartCollection)
             const cartItems = querySnapshot.docs.map(doc=>{
                 const data = doc.data();
@@ -33,9 +37,10 @@ function ShoppingCart() {
             console.error("Error fetching data")
         }
         }
+        }
         fetchCartData();
     },[])  
-  return (
+    return (
     <div className='flex justify-around  mt-20'>
         <div className=''>
             <h1 className='font-bold text-xl'>Shopping Cart</h1>
@@ -91,7 +96,7 @@ function ShoppingCart() {
             </div>
         </div>
     </div>
-  )
+    )
 }
 
 export default ShoppingCart
