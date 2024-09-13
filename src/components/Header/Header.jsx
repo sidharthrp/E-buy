@@ -4,10 +4,15 @@ import SearchIcon from "/HeaderImages/Search.png";
 import userIcon from "/HeaderImages/user.png";
 import addCart from "/HeaderImages/Stroke-5.png";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import { useSignOut } from "../Authentication/Logout";
 
 
 const Header = () => {
+  const auth = getAuth()
+  const user = auth.currentUser
   const navigate = useNavigate()
+  const handleSignOut = useSignOut()
   return (
     <div className="pt-5 flex items-center justify-around">
       <div className="flex">
@@ -28,8 +33,12 @@ const Header = () => {
       </div>
       <div className="relative flex items-center justify-between px-2 ">
         <img src={userIcon} alt="" className=" h-6 w-6 " />
-        <span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
-
+        {user?<>
+          <span>{user.displayName}</span>
+          <button className="p-2" onClick={handleSignOut}>LogOut</button>
+        </>
+        :<span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
+        }
         <img src={addCart} className="mx-1 h-4 w-5 " />
         <span className="cursor-pointer" onClick={()=>navigate('/cart')}>Cart</span>
       </div>

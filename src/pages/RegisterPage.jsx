@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
 // import Login from '../components/LoginInput/Login';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../components/Firebase/firebase';
 import google from '/SignIn/google.png';
 import bg from '/SignIn/bg.jpg';
 import { useNavigate } from 'react-router-dom';
 
 function RegisterPage() {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
+    const [formData, setFormData] = useState({
+        name:'',
+        email:'',
+        password:''
+    })
     const navigate = useNavigate()
 
 
     const register = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
+
         try {
-            const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-            console.log(user); // Log user details (optional)
+            const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+            const user = userCredential.user
+
+            await updateProfile(user, {displayName: formData.name})
+            navigate("/")
+            console.log(user);
         } catch (err) {
             console.error(err.message);
         }
     };
 
-    function handleEmail(event) {
-        setRegisterEmail(event.target.value);
-    }
-
-    function handlePassword(event) {
-        setRegisterPassword(event.target.value);
+    function handleChange(event) {
+        const {name, value} = event.target
+        setFormData({...formData,
+            [name]:value
+        })
     }
 
     return (
@@ -46,12 +53,22 @@ function RegisterPage() {
                 <h1 className="py-10 text-4xl text-center">Get Started Now</h1>
 
                 <form onSubmit={register} className="w-full">
+                <div className="py-6">
+                        <p className="text-[16px]">Name</p>
+                        <input
+                            type="text"
+                            name='name'
+                            className="border-2 w-full h-[32px] rounded-lg p-2"
+                            onChange={handleChange}
+                        />
+                    </div>
                     <div className="py-6">
                         <p className="text-[16px]">Email Address</p>
                         <input
                             type="email"
+                            name='email'
                             className="border-2 w-full h-[32px] rounded-lg p-2"
-                            onChange={handleEmail}
+                            onChange={handleChange}
                         />
                     </div>
 
@@ -59,8 +76,9 @@ function RegisterPage() {
                         <p className="text-[16px]">Password</p>
                         <input
                             type="password"
+                            name='password'
                             className="border-2 w-full h-[32px] rounded-lg p-2"
-                            onChange={handlePassword}
+                            onChange={handleChange}
                         />
                     </div>
 
