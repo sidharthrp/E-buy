@@ -44,7 +44,7 @@ function ShoppingCart() {
     <div className='flex justify-around  mt-20'>
         <div className=''>
             <h1 className='font-bold text-xl'>Shopping Cart</h1>
-            <p>You have {items.length>0?items.length : 0} items in your cart</p>
+            <p>{items.length>0 && `You have ${items.length}  items in your cart`}</p>
             {items.length>0 ? <div className='my-10 '>
                 {items.map((item)=>{
                     totalPrice+=parseInt(item.price)
@@ -67,11 +67,17 @@ function ShoppingCart() {
                 }
                 )}
             <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg'>Proceed to Buy</button>
-            </div>: <p>No Items in Cart</p>}
+            </div>: 
+                <div>
+                <p className='py-5'>Your Cart is Empty</p>
+                <p>Browse products to find something you like</p>
+                </div>
+            }
         </div>
         
+        
         <div className=' p-10 '>
-            <div className='rounded-xl p-5 shadow-lg'>
+        {items.length>0 && <div className='rounded-xl p-5 shadow-lg'>
                 <h1 className='p-5 text-xl'>Price Details</h1>
                 <div className='flex justify-between'>
                     <p className='py-2'>Price({items&& items.length} items) </p>
@@ -94,7 +100,9 @@ function ShoppingCart() {
                 </div>
             
             </div>
+                }
         </div>
+
     </div>
     )
 }
