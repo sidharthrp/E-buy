@@ -15,15 +15,12 @@ function Products({isSelected}) {
         })
     },[isSelected])
     
-    function productNav(id){
-
-    }
   
     return (
-    <div className='mt-10'>
+    <div className='mt-10 flex-grow'>
         <h1 className=' m-10 text-2xl font-bold capitalize text-[#008ECC]'>{isSelected?isSelected:"Products"}</h1>
         {data &&
-         <div className="grid grid-cols-4 grid-rows-5 gap-4 overflow-hidden">
+         <div className="grid grid-cols-4 gap-4 overflow-hidden">
             {data.map((entry,index)=>{
                 return(
                     <div key={index} className='flex flex-col items-center m-1  '>

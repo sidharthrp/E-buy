@@ -57,7 +57,7 @@ function Banner() {
         {data.length>0?
         <div className=' mx-40 w-[full] h-[300px] flex items-center'>
             <div className=' relative md:w-[700px] lg:w-full h-[216px]' > 
-                <img className='w-full h-[216px]  object-contain bg-gradient-to-r from-blue-400 from-5% via-white via-50% to-blue-400 to-100% hover:cursor-pointer'
+                <img className='w-full h-[216px]  object-contain bg-gradient-to-r from-[#008ECC] from-5% via-white via-50% to-[#008ECC] to-100% hover:cursor-pointer'
                  src={data[index].image} onClick={()=>navigate(`/${data[index].id}`)}></img>  
                     
 

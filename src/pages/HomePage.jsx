@@ -3,9 +3,10 @@ import Header from '../components/Header/Header'
 import Category from '../components/Category/Category'
 import Banner from '../components/Banner/Banner'
 import Products from '../components/Products/Products'
+import { useOutletContext } from 'react-router-dom'
 
 function HomePage() {
-    const [selectedValue, setSelectedValue] = useState(null);
+    const {selectedValue, setSelectedValue} = useOutletContext(); // instead of state, we use the outlet context
 
     const handleClick = (value) => {
       setSelectedValue(value);
@@ -14,7 +15,6 @@ function HomePage() {
   
     return (
       <div>
-        {/* <Header></Header> */}
         <Category onClick={handleClick}></Category>
         <Banner></Banner>
         <Products isSelected= {selectedValue ? selectedValue : false}></Products>
