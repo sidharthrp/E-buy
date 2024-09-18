@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import {db} from '../components/Firebase/firebase'
 import {getDocs, collection} from 'firebase/firestore'
 import deleteIcon from '/Cart/delete.png'

@@ -18,7 +18,7 @@ const Header = ({onResetCategory}) => {
     navigate('/');
   }
   return (
-    <div className="sticky top-0 z-50 pt-5 bg-white flex items-center justify-around"> {/* Sticky top-0 z-50 fixes header to the top. */}
+    <div className="sticky top-0 z-50 pt-5 bg-white flex items-center justify-around pb-2"> {/* Sticky top-0 z-50 fixes header to the top. */}
       <div className="flex">
         <img src={cartIcon} alt="" className="w-[48px] h-[48px]" />
         <span className="w-[138px] h-[28px] py-3 font-bold text-2xl text-[#008ECC] pl-3 cursor-pointer" onClick={handleNavigation}>E-BUY</span>
