@@ -20,7 +20,7 @@ function Checkout() {
     <form  className='shadow-xl rounded-md p-5' >
       <h3 className='font-bold text-center pt-10 pb-4 text-xl'>Payment Details</h3>
       <div className='py-4'>
-        <h1>Pay With</h1>
+        <h1 className='font-bold'>Pay With</h1>
         
         <input className='' type='radio' name='payment' value='card'></input>
         <label className='pr-3 pl-1'>Card</label>
@@ -32,7 +32,7 @@ function Checkout() {
         <label className='pr-3 pl-1'>UPI</label>
       </div>
       <div>
-        <label>Card Number:</label>
+        <label className='font-bold'>Card Number:</label>
         <br></br>
         <input className=' border-black rounded-md'
           type="text"
@@ -43,8 +43,10 @@ function Checkout() {
           required
         />
       </div>
+      <div className='flex justify-between w-[200px]'>
       <div>
-        <label>Expiration Date:</label>
+        <label className='font-bold'>Expiration Date:</label>
+        <br></br>
         <input
           type="text"
           name="expirationDate"
@@ -55,7 +57,8 @@ function Checkout() {
         />
       </div>
       <div>
-        <label>CVC:</label>
+        <label className='font-bold'>CVV</label>
+        <br></br>
         <input
           type="text"
           name="cvc"
@@ -65,7 +68,8 @@ function Checkout() {
           required
         />
       </div>
-      <button type="submit">Submit Payment</button>
+      </div>
+      <button type="submit" className='bg-green-600 text-white rounded-lg px-20 mt-5'>Submit</button>
     </form>
     </div>
     )

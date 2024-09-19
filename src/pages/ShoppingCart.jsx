@@ -4,6 +4,7 @@ import {getDocs, collection} from 'firebase/firestore'
 import deleteIcon from '/Cart/delete.png'
 import { removeCartItem } from '../components/Cart/RemoveCart';
 import { getAuth } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 function ShoppingCart() {
     const [items, setItems] = useState([]);
@@ -11,6 +12,7 @@ function ShoppingCart() {
     let discount = 1
     let finalPrice = 0
     let delivery = 10
+    const navigate = useNavigate()
     useEffect(()=>{
         const fetchCartData = async() => {
         const auth = getAuth();
@@ -65,7 +67,7 @@ function ShoppingCart() {
                 )
                 }
                 )}
-            <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg'>Proceed to Buy</button>
+            <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg' onClick={()=>navigate('/payment')}>Proceed to Buy</button>
             </div>: 
                 <div>
                 <p className='py-5'>Your Cart is Empty</p>
