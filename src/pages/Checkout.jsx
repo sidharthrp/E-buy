@@ -16,8 +16,8 @@ function Checkout() {
     };
 
      return (
-    <div className='flex justify-center items-center '>
-    <form  className='shadow-xl rounded-md p-5' >
+    <div className='flex justify-center items-center pt-20 '>
+    <form  className=' shadow-lg rounded-md p-5' >
       <h3 className='font-bold text-center pt-10 pb-4 text-xl'>Payment Details</h3>
       <div className='py-4'>
         <h1 className='font-bold'>Pay With</h1>
@@ -34,7 +34,7 @@ function Checkout() {
       <div>
         <label className='font-bold'>Card Number:</label>
         <br></br>
-        <input className=' border-black rounded-md'
+        <input className=' border-2 border-gray-300 rounded-md w-full mb-7'
           type="text"
           name="cardNumber"
           value={paymentInfo.cardNumber}
@@ -43,11 +43,12 @@ function Checkout() {
           required
         />
       </div>
-      <div className='flex justify-between w-[200px]'>
+      <div className='flex justify-between w-[300px]'>
       <div>
-        <label className='font-bold'>Expiration Date:</label>
-        <br></br>
+        <label className='font-bold py-2 '>Expiration Date</label>
+        
         <input
+          className='w-32 border-2 border-gray-300 rounded-md'
           type="text"
           name="expirationDate"
           value={paymentInfo.expirationDate}
@@ -57,9 +58,10 @@ function Checkout() {
         />
       </div>
       <div>
-        <label className='font-bold'>CVV</label>
+        <label className='font-bold '>CVV</label>
         <br></br>
         <input
+        className='w-16 border-2 border-gray-300 rounded-md'
           type="text"
           name="cvc"
           value={paymentInfo.cvc}
@@ -69,7 +71,7 @@ function Checkout() {
         />
       </div>
       </div>
-      <button type="submit" className='bg-green-600 text-white rounded-lg px-20 mt-5'>Submit</button>
+      <button type="submit" className='bg-green-600 text-white rounded-lg py-[1px] mt-8 w-full'>Pay</button>
     </form>
     </div>
     )
