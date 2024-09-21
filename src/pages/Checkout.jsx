@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
-
+import completeOrder from '../components/Cart/Payment';
+import { useLocation } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 function Checkout() {
     const [paymentInfo, setPaymentInfo] = useState({
         cardNumber: '',
@@ -7,6 +9,9 @@ function Checkout() {
         cvc: '',
     });
       
+    const location = useLocation()
+    const {items, finalPrice} = location.state
+
     const handleChange = (e) => {
         const {name,value} = e.target
         setPaymentInfo({
@@ -15,9 +20,23 @@ function Checkout() {
         });
     };
 
+    const handlePayment = async(e) =>{
+        e.preventDefault()
+        const auth = getAuth()
+        const user = auth.currentUser
+        if(user){
+            completeOrder(items,finalPrice,user)
+            console.log("Order success")
+        }
+        else{
+            console.error("User not authenticated")
+        }
+
+    }
+
      return (
     <div className='flex justify-center items-center pt-20 '>
-    <form  className=' shadow-lg rounded-md p-5' >
+    <form  className=' shadow-lg rounded-md p-5' onSubmit={handlePayment}>
       <h3 className='font-bold text-center pt-10 pb-4 text-xl'>Payment Details</h3>
       <div className='py-4'>
         <h1 className='font-bold'>Pay With</h1>
@@ -71,7 +90,7 @@ function Checkout() {
         />
       </div>
       </div>
-      <button type="submit" className='bg-green-600 text-white rounded-lg py-[1px] mt-8 w-full'>Pay</button>
+      <button type="submit" className='bg-green-600 text-white rounded-lg py-[1px] mt-8 w-full'>Pay ${finalPrice}</button>
     </form>
     </div>
     )

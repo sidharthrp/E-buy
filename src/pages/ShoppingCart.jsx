@@ -41,6 +41,16 @@ function ShoppingCart() {
         }
         fetchCartData();
     },[])  
+
+    const handleBuy = () => {  //Sending state while navigating and will retrieve using useLocation
+        navigate('/payment', {
+            state: {
+                items,
+                finalPrice
+            }
+        })
+    }
+
     return (
     <div className='flex justify-around  mt-20'>
         <div className=''>
@@ -67,7 +77,7 @@ function ShoppingCart() {
                 )
                 }
                 )}
-            <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg' onClick={()=>navigate('/payment')}>Proceed to Buy</button>
+            <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg' onClick={handleBuy}>Proceed to Buy</button>
             </div>: 
                 <div>
                 <p className='py-5'>Your Cart is Empty</p>
