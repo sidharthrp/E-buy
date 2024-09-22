@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import ShoppingCart from './pages/ShoppingCart'
 import Checkout from './pages/Checkout'
+import Orders from './pages/Orders'
 
 
 function App() {
@@ -19,6 +20,7 @@ return(
       <Route path=':id' element={<ProductPage />}></Route>  
       <Route path='/cart' element={<ShoppingCart />}> </Route>
       <Route path='/payment' element={<Checkout />}></Route>
+      <Route path='/orders' element={<Orders />} ></Route>
       </Route>
       <Route path='/login' element={<LoginPage />}></Route>
       <Route path='/register' element={<RegisterPage />}></Route>

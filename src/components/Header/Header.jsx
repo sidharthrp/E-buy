@@ -35,16 +35,25 @@ const Header = ({onResetCategory}) => {
           placeholder="Search for Products, Brands and More"
         />
       </div>
-      <div className="relative flex items-center justify-between px-2 ">
+      <div className="relative flex items-center justify-between px-2 gap-3">
+        <div className="flex items-center">
+        <img src={addCart} className="mx-1 h-4 w-5 " />
+        <span className="cursor-pointer hover:text-[#008ECC]" onClick={()=>navigate('/cart')}>Cart</span>
+        </div>
+        <div className="flex items-center">
         <img src={userIcon} alt="" className=" h-6 w-6 " />
-        {user?<>
-          <span>{user.displayName}</span>
-          <button className="p-2" onClick={handleSignOut}>LogOut</button>
-        </>
+        {user?<div className="group relative">
+          <span className='w-19 cursor-pointer hover:text-[#008ECC]'>{user.displayName}</span>
+          <div className=" absolute hidden group-hover:block">
+            <button className="py-2 text-left whitespace-nowrap hover:text-[#008ECC]" onClick={()=>navigate('/orders')}>My Orders</button>
+            <button className=" hover:text-[#008ECC]" onClick={handleSignOut}>LogOut</button>
+          </div>
+          {/* <button className="p-2" onClick={handleSignOut}>LogOut</button> */}
+        </div>
         :<span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
         }
-        <img src={addCart} className="mx-1 h-4 w-5 " />
-        <span className="cursor-pointer" onClick={()=>navigate('/cart')}>Cart</span>
+        </div>
+        
       </div>
     </div>
   );
