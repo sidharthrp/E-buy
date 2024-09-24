@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import cartIcon from "/HeaderImages/DropDown.png";
 import SearchIcon from "/HeaderImages/Search.png";
 import userIcon from "/HeaderImages/user.png";
@@ -6,17 +6,27 @@ import addCart from "/HeaderImages/Stroke-5.png";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { useSignOut } from "../Authentication/Logout";
+import { SearchContext } from "../Search/SearchContext";
 
 
 const Header = ({onResetCategory}) => {
+  const {setSearchQuery} = useContext(SearchContext)
   const auth = getAuth()
   const user = auth.currentUser
   const navigate = useNavigate()
+
   const handleSignOut = useSignOut()
+  
   const handleNavigation = () => {
     onResetCategory();
     navigate('/');
   }
+
+  const handleInputChange = (e) => {
+    const value = e.target.value
+    setSearchQuery(value)
+  }
+
   return (
     <div className="sticky top-0 z-50 pt-5 bg-white flex items-center justify-around pb-2"> {/* Sticky top-0 z-50 fixes header to the top. */}
       <div className="flex">
@@ -33,6 +43,7 @@ const Header = ({onResetCategory}) => {
           className="pl-10 w-[550px] h-[48px] flex items-center justify-between border border-gray-300 rounded-md"
           type="text"
           placeholder="Search for Products, Brands and More"
+          onChange={handleInputChange}
         />
       </div>
       <div className="relative flex items-center justify-between px-2 gap-3">

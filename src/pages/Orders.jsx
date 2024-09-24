@@ -37,14 +37,14 @@ function Orders() {
         <div className='flex flex-col items-center justify-center gap-5 '>
         {orderData &&
             orderData.map(order => (
-                <div key={order.id}>
-                    <h2>Order ID: {order.id}</h2>
+                <div className='w-[500px] rounded-xl p-2 shadow-lg' key={order.id}>
+                    <h2 className=''>Order ID: {order.id}</h2>
                     
                     <p>Total Amount: ${order.totalAmount}</p>
-                    <h3>Items:</h3>
+                    <h3 >Items:</h3>
                         <ul>
                             {order.items.map(item => (
-                                <li key={item.id}>
+                                <li className='font-bold' key={item.id}>
                                     {item.name.length>40?item.name.substring(0,40)+'...':item.name} - ${item.price}
                                 </li>
                             ))}

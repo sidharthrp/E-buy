@@ -8,12 +8,14 @@ import RegisterPage from './pages/RegisterPage'
 import ShoppingCart from './pages/ShoppingCart'
 import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
+import { SearchProvider } from './components/Search/SearchContext'
 
 
 function App() {
 return(
   <div>
     <BrowserRouter>
+    <SearchProvider>
     <Routes>
       <Route element={<Layout />}>
       <Route path='/' element= {<HomePage />}></Route>
@@ -25,6 +27,7 @@ return(
       <Route path='/login' element={<LoginPage />}></Route>
       <Route path='/register' element={<RegisterPage />}></Route>
     </Routes>
+    </SearchProvider>
     </BrowserRouter>
   </div>
 )
