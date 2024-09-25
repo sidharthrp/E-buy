@@ -1,14 +1,15 @@
 import React,{useState} from 'react'
 import completeOrder from '../components/Cart/Payment';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
+import { removeCartItem } from '../components/Cart/RemoveCart';
 function Checkout() {
     const [paymentInfo, setPaymentInfo] = useState({
         cardNumber: '',
         expirationDate: '',
         cvc: '',
     });
-      
+    const navigate = useNavigate()  
     const location = useLocation()
     const {items, finalPrice} = location.state
 
@@ -25,12 +26,17 @@ function Checkout() {
         const auth = getAuth()
         const user = auth.currentUser
         if(user){
-            completeOrder(items,finalPrice,user)
+            await completeOrder(items,finalPrice,user)
+            items.forEach(item => {
+              removeCartItem(item.id);
+            });
             console.log("Order success")
+            navigate('/orders')
         }
         else{
             console.error("User not authenticated")
         }
+        
 
     }
 
