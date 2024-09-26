@@ -9,6 +9,8 @@ import ShoppingCart from './pages/ShoppingCart'
 import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
 import { SearchProvider } from './components/Search/SearchContext'
+import About from './pages/About'
+import Contact from './pages/Contact'
 
 
 function App() {
@@ -23,6 +25,9 @@ return(
       <Route path='/cart' element={<ShoppingCart />}> </Route>
       <Route path='/payment' element={<Checkout />}></Route>
       <Route path='/orders' element={<Orders />} ></Route>
+      <Route path='/about' element={<About />} ></Route>
+      <Route path='/contact' element={<Contact />} ></Route>
+      
       </Route>
       <Route path='/login' element={<LoginPage />}></Route>
       <Route path='/register' element={<RegisterPage />}></Route>

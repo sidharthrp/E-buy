@@ -53,11 +53,11 @@ function Banner() {
     };
 
     return (
-    <div>
+    <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden" >
         {data.length>0?
         <div className=' mx-40 w-[full] h-[300px] flex items-center'>
             <div className=' relative md:w-[700px] lg:w-full h-[216px]' > 
-                <img className='w-full h-[216px]  object-contain bg-gradient-to-r from-[#008ECC] from-5% via-white via-50% to-[#008ECC] to-100% hover:cursor-pointer'
+                <img className='"absolute inset-0 w-full h-[216px]  object-contain bg-gradient-to-r from-[#008ECC] from-5% via-white via-50% to-[#008ECC] to-100% hover:cursor-pointer'
                  src={data[index].image} onClick={()=>navigate(`/${data[index].id}`)}></img>  
                     
 
