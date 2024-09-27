@@ -53,7 +53,7 @@ function Banner() {
     };
 
     return (
-    <div className="relative w-full h-64 md:h-80 lg:h-96 overflow-hidden" >
+    <div className="hidden lg:block relative w-full h-64 md:h-80 lg:h-96 overflow-hidden" >
         {data.length>0?
         <div className=' mx-40 w-[full] h-[300px] flex items-center'>
             <div className=' relative md:w-[700px] lg:w-full h-[216px]' > 
@@ -64,11 +64,11 @@ function Banner() {
                  <div className="absolute bottom-4 left-4 text-black uppercase text-xl font-bold">
                         {data[index].category}
                 </div>
-                <div className="absolute bottom-24 left-56 text-black text-5xl font-bold uppercase">
+                <div className="absolute bottom-24 left-20 xl:bottom-24 xl:left-28 text-black text-3xl  xl:text-5xl font-bold uppercase">
                         Best Deals
                 </div>
-                <div className="absolute bottom-14 left-60 text-black text-2xl font-bold">
-                        Upto 80% off.
+                <div className="absolute bottom-16 left-20  xl:bottom-16 xl:left-28 text-black text-xl  xl:text-3xl ">
+                        Upto <strong>80% </strong>off
                 </div>
                 <button onClick={prevImage}
                         className=" absolute top-1/2 left-4 transform -translate-y-1/2  text-black px-3 py-1 rounded h-20 bg-white">

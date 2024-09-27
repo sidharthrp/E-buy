@@ -52,7 +52,8 @@ function ShoppingCart() {
     }
 
     return (
-    <div className='flex justify-around  mt-20'>
+    <>
+    <div className='flex flex-col md:flex-row  md:justify-around items-center md:items-start  mt-20'>
         <div className=''>
             <h1 className='font-bold text-xl'>Shopping Cart</h1>
             <p>{items.length>0 && `You have ${items.length}  items in your cart`}</p>
@@ -77,7 +78,7 @@ function ShoppingCart() {
                 )
                 }
                 )}
-            <button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg' onClick={handleBuy}>Proceed to Buy</button>
+            
             </div>: 
                 <div>
                 <p className='py-5'>Your Cart is Empty</p>
@@ -87,7 +88,7 @@ function ShoppingCart() {
         </div>
         
         
-        <div className=' p-10 '>
+        <div className=' p-10 w-[400px]'>
         {items.length>0 && <div className='rounded-xl p-5 shadow-lg'>
                 <h1 className='p-5 text-xl'>Price Details</h1>
                 <div className='flex justify-between'>
@@ -115,6 +116,15 @@ function ShoppingCart() {
         </div>
 
     </div>
+    <div className='flex justify-center mt-6'>
+        <button
+          className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg'
+          onClick={handleBuy}
+        >
+          Proceed to Buy
+        </button>
+      </div>
+    </>
     )
 }
 

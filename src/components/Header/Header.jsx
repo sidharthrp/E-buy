@@ -40,7 +40,7 @@ const Header = ({onResetCategory}) => {
           alt="search"
         />
         <input
-          className="pl-10 w-[550px] h-[48px] flex items-center justify-between border border-gray-300 rounded-md"
+          className="hidden sm:block md:w-[300px] pl-10 lg:w-[450px] xl:w-[550px] h-[48px] md-flex items-center justify-between border border-gray-300 rounded-md"
           type="text"
           placeholder="Search for Products, Brands and More"
           onChange={handleInputChange}
@@ -57,11 +57,11 @@ const Header = ({onResetCategory}) => {
           <span className='w-19 cursor-pointer hover:text-[#008ECC]'>{user.displayName}</span>
           <div className=" absolute hidden group-hover:block">
             <button className="py-2 text-left whitespace-nowrap hover:text-[#008ECC]" onClick={()=>navigate('/orders')}>My Orders</button>
-            <button className=" hover:text-[#008ECC]" onClick={handleSignOut}>LogOut</button>
+            <button className=" hover:text-[#008ECC]" onClick={handleSignOut}>Logout</button>
           </div>
           {/* <button className="p-2" onClick={handleSignOut}>LogOut</button> */}
         </div>
-        :<span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Log In</span>
+        :<span className="mx-2 cursor-pointer" onClick={()=>navigate("/login",)} >Login</span>
         }
         </div>
         

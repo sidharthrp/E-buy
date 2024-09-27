@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-function Category({onClick}) {
+function Category({onClick, isSelected }) {
     const [data,setData] = useState();
     const [activeCategory, setActiveCategory] = useState();
     
+    
+
     useEffect(()=>{
         axios.get('https://fakestoreapi.com/products/categories')
         .then((res)=>{
@@ -12,6 +14,12 @@ function Category({onClick}) {
             setData(res.data)
         })
     },[])
+
+    useEffect(() => {
+        if (!isSelected) {
+          setActiveCategory(null);
+        }
+      }, [isSelected]);
 
     function handleCategoryClick(category){
         onClick(category)

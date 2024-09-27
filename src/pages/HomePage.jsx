@@ -15,7 +15,7 @@ function HomePage() {
   
     return (
       <div>
-        <Category onClick={handleClick}></Category>
+        <Category onClick={handleClick} isSelected={selectedValue ? true : false}></Category>
         <Banner></Banner>
         <Products isSelected= {selectedValue ? selectedValue : false}></Products>
       </div>

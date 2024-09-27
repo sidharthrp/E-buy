@@ -29,7 +29,7 @@ function Products({ isSelected }) {
         {isSelected ? isSelected : 'Products'}
       </h1>
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-4 gap-4 overflow-hidden"> 
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden"> 
           {filteredProducts.map((entry, index) => (           
             <div key={index} className="flex flex-col items-center m-1">
               <img

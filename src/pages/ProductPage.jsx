@@ -35,7 +35,7 @@ function ProductPage() {
   return (
     <div>
         {productDtls && 
-        <div className=' flex justify-around items-start mt-10'>
+        <div className='flex flex-col md:flex-row justify-around items-start sm:justify-center sm:items-center mt-10'>
             <div className='p-16 border-2 m-8'>
                 <img src={productDtls.image} className=' h-96 w-72'></img>
                 <div className='mt-10 flex justify-between items-center'>
@@ -45,7 +45,7 @@ function ProductPage() {
                 </div>
                 {add && <p className='text-green-500 my-5 font-bold'>Item Added to Cart</p>}
             </div>
-            <div className='m-8 w-[900px]'>
+            <div className='m-8 w-[450px] lg:w-[900px]'>
                 <h1 className=' text-3xl'>{productDtls.title}</h1>
                 <p className='py-2'>{productDtls.rating.rate}⭐ ({productDtls.rating.count} ratings)</p>
                 <h1 className='text-4xl mt-16 font-bold'>${productDtls.price} </h1>
