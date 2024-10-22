@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 function Category({onClick, isSelected }) {
     const [data,setData] = useState();
@@ -35,7 +36,7 @@ function Category({onClick, isSelected }) {
         <div className='flex justify-evenly mt-5'>
         {data.map((entry,index)=>{
             return(
-                <button onClick={()=>handleCategoryClick(entry)} className={activeCategory===entry?activeBtnCSS:categoryCSS} key={index}>{entry}</button>
+                <motion.button layoutId={`tab-indicator-${index}`} onClick={()=>handleCategoryClick(entry)} className={activeCategory===entry?activeBtnCSS:categoryCSS} key={index}>{entry}</motion.button>
             )
         })}
         </div>

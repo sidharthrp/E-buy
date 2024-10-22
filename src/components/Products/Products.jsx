@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SearchContext } from '../Search/SearchContext'
+import { motion } from 'framer-motion';
 
 function Products({ isSelected }) {
   const navigate = useNavigate();
@@ -31,22 +32,24 @@ function Products({ isSelected }) {
       {filteredProducts.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden"> 
           {filteredProducts.map((entry, index) => (           
-            <div key={index} className="flex flex-col items-center m-1">
-              <img
-                className="h-32 w-28 cursor-pointer hover:scale-110"
+            <motion.div key={index} className="flex flex-col items-center m-1 group cursor-pointer"
+            whileHover={{scale:1.01}}
+            onClick={() => navigate(`/${entry.id}`)}>
+              <motion.img
+                className="h-32 w-28 group-hover:scale-110 transition-transform duration-300 "
                 src={entry.image}
-                onClick={() => navigate(`/${entry.id}`)}
+                
               />
-              <h1 className="p-2 text-sm cursor-pointer">
+              <h1 className="p-2 text-sm cursor-pointer group-hover:font-bold">
                 {entry.title.length > 40
-                  ? entry.title.substring(0, 40) + '...'
+                  ? entry.title.substring(0, 38) + '...'
                   : entry.title}
               </h1>
               <h2 className="font-bold text-[#388e3c]">${entry.price}</h2>
               <h2>
                 {entry.rating.rate}⭐ ({entry.rating.count})
               </h2>
-            </div>
+            </motion.div>
           ))}
         </div>
       ) : (

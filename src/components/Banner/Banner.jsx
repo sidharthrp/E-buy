@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom'
+import { motion} from 'framer-motion';
 
 function Banner() {
     const [data, setData] = useState([])
@@ -58,7 +59,8 @@ function Banner() {
         <div className=' mx-40 w-[full] h-[300px] flex items-center'>
             <div className=' relative md:w-[700px] lg:w-full h-[216px]' > 
                 <img className='"absolute inset-0 w-full h-[216px]  object-contain bg-gradient-to-r from-[#008ECC] from-5% via-white via-50% to-[#008ECC] to-100% hover:cursor-pointer'
-                 src={data[index].image} onClick={()=>navigate(`/${data[index].id}`)}></img>  
+                 
+                 src={data[index].image} onClick={()=>navigate(`/${data[index].id}`)} /> 
                     
 
                  <div className="absolute bottom-4 left-4 text-black uppercase text-xl font-bold">
@@ -71,11 +73,11 @@ function Banner() {
                         Upto <strong>80% </strong>off
                 </div>
                 <button onClick={prevImage}
-                        className=" absolute top-1/2 left-4 transform -translate-y-1/2  text-black px-3 py-1 rounded h-20 bg-white">
+                        className=" absolute top-1/2 left-4 transform -translate-y-1/2  text-black px-3 py-1 rounded h-20 bg-white hover:scale-110">
                         <FaChevronLeft />
                 </button>
                 <button onClick={nextImage} 
-                        className=" absolute top-1/2 right-4 transform -translate-y-1/2 text-black px-3 py-1 h-20 bg-white rounded">
+                        className=" absolute top-1/2 right-4 transform -translate-y-1/2 text-black px-3 py-1 h-20 bg-white rounded hover:scale-110">
                         <FaChevronRight />
                 </button>
                 

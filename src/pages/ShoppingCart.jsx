@@ -116,14 +116,14 @@ function ShoppingCart() {
         </div>
 
     </div>
-    <div className='flex justify-center mt-6'>
+    {items.length>0 && <div className='flex justify-center mt-6'>
         <button
           className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg'
           onClick={handleBuy}
         >
           Proceed to Buy
         </button>
-      </div>
+      </div>}
     </>
     )
 }

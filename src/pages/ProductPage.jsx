@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addToCart } from '../components/Cart/CartActions'
 import { getAuth } from 'firebase/auth'
+import { motion } from 'framer-motion'
 
 function ProductPage() {
   const {id} = useParams()
@@ -39,8 +40,10 @@ function ProductPage() {
             <div className='p-16 border-2 m-8'>
                 <img src={productDtls.image} className=' h-96 w-72'></img>
                 <div className='mt-10 flex justify-between items-center'>
-                    <button className='bg-amber-500 text-white h-12 uppercase p-2 border-4' onClick={handleAddToCart}>Add to Cart</button>
-                    <button className='bg-green-500 text-white h-12 uppercase p-2 border-4'>Buy Now</button>
+                    <motion.button className='bg-amber-500 rounded-lg p-2 text-white hover:text-black shadow-lg' onClick={handleAddToCart}
+                    whileHover={{scale:1.08}}> Add to Cart</motion.button>
+                    <motion.button className='bg-green-600 rounded-lg p-2 text-white hover:text-black shadow-lg' 
+                     whileHover={{scale:1.08}}> Buy Now</motion.button>
                     
                 </div>
                 {add && <p className='text-green-500 my-5 font-bold'>Item Added to Cart</p>}
@@ -48,7 +51,7 @@ function ProductPage() {
             <div className='m-8 w-[450px] lg:w-[900px]'>
                 <h1 className=' text-3xl'>{productDtls.title}</h1>
                 <p className='py-2'>{productDtls.rating.rate}⭐ ({productDtls.rating.count} ratings)</p>
-                <h1 className='text-4xl mt-16 font-bold'>${productDtls.price} </h1>
+                <h1 className='text-4xl mt-16 font-bold text-green-500'>${productDtls.price} </h1>
                 <p className='mt-10'>{productDtls.description}</p>
                
             </div>
