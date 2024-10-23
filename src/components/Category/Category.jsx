@@ -27,8 +27,8 @@ function Category({onClick, isSelected }) {
         setActiveCategory(category)
     }
 
-    let categoryCSS= 'bg-[#F3F9FB] rounded-xl p-1 hover:text-[#008ECC] capitalize'
-    let activeBtnCSS = 'text-[#008ECC] rounded-xl p-1 capitalize underline font-bold'
+    let categoryCSS= 'bg-[#F3F9FB] rounded-xl p-1 hover:text-[#008ECC] capitalize hover:bg-white hover:font-bold'
+    let activeBtnCSS = 'text-[#008ECC] rounded-xl p-1 capitalize underline font-bold '
 
     return (
     <>
@@ -36,7 +36,7 @@ function Category({onClick, isSelected }) {
         <div className='flex justify-evenly mt-5'>
         {data.map((entry,index)=>{
             return(
-                <motion.button layoutId={`tab-indicator-${index}`} onClick={()=>handleCategoryClick(entry)} className={activeCategory===entry?activeBtnCSS:categoryCSS} key={index}>{entry}</motion.button>
+                <motion.button whileHover={{scale:1.1}} layoutId={`tab-indicator-${index}`} onClick={()=>handleCategoryClick(entry)} className={activeCategory===entry?activeBtnCSS:categoryCSS} key={index}>{entry}</motion.button>
             )
         })}
         </div>
